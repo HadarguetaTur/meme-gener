@@ -14,3 +14,8 @@
 .text-line-bottom{
     display: none;
 }
+
+.aditor{
+    border-inline-end: 1px solid #4f4e4e;
+    border-inline-start: 1px solid #4f4e4e;
+}

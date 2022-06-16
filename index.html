@@ -16,7 +16,7 @@
   <title>Blogin.</title>
 </head>
 
-<body onload="init()">
+<body onload="init()" class="main-layout ">
   <header class="main-header main-layout ">
     <div class="main-nav flex justify-between ">
       <div class="main-logo justify-between justify-center">
@@ -51,9 +51,9 @@
       <button onclick="clearCanva()">clear</button>
       <button onclick="changeSize(1)">A+</button>
       <button onclick="changeSize(0)">A-</button>
-      <button>lefy</button>
-      <button>center</button>
-      <button>right</button>
+      <button onclick="changDir('ltr')">lefy</button>
+      <button onclick="changDir('inherit')">center</button>
+      <button onclick="changDir('rtl')">right</button>
       <a href="#" onclick="downloadCanvas(this)" download="my-meme">Dawnload</a>
       
     

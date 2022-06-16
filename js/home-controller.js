@@ -18,6 +18,7 @@ function renderImgs() {
     const imgs = getImgByFillter()
     console.log(imgs)
     const grid = document.querySelector('.grid')
+    grid.innerHTML =' '
     for (let i = 0; i < imgs.length; i++) {
         var img = imgs[i]
         grid.innerHTML += `<div class="img-div"><img onclick="getSelectId(${img.id})" src=${img.url} alt="${img.id}" class="img ${img.id}"></div>`
@@ -26,7 +27,7 @@ function renderImgs() {
 
 
 function onSetWord(serchWord) {
-    getFilterBy(serchWord)
+    getFilterBy(serchWord.word)
     renderImgs()
 }
 
@@ -41,12 +42,14 @@ function moveTonextPage(){
     document.querySelector('.gallery').style.display="none"
     document.querySelector('.aditor').style.display="flex"
 }
+
+
  function renderCanvas(){
     var meme=getMeme()
     renderImgCanvas(meme.selectedImgId)
     var line=wichLine()
     console.log(line)
-    renderTxtLine(line.txt,line.pos) 
+    renderTxtLine(line.txt,line.pos,line.align) 
     
  }
 
@@ -59,13 +62,14 @@ function renderImgCanvas(id){
 }
 
 
-function renderTxtLine(text,pos){
+function renderTxtLine(text,pos,align){
     debugger
     gCtx.lineWidth = 2;
     gCtx.strokeStyle = 'white';
     gCtx.fillStyle = 'black';
     gCtx.font = getFont();
     gCtx.fillText(text, pos.x, pos.y);
+    gCtx.direction=align
     gCtx.strokeText(text, pos.x, pos.y);
 }
 
@@ -81,12 +85,19 @@ function setNewText(textLine){
     saveMemeText(textLine) 
     saveNewIdex(textLine.idx)
     var line=wichLine()
-    renderTxtLine(line.txt,line.pos) 
+    renderTxtLine(line.txt,line.pos,line.align) 
 }
 
+function changDir(direc){
+    saveNewAline(direc)
+    renderCanvas()
 
+}
 
+function getAline(){
+    
 
+}
 
 function clearCanva(){
     initTxt()

@@ -29,9 +29,7 @@ function getMeme(){
 
 function istextClicked(clickedPos) {
     const { pos } = gCircle.lines
-    // Calc the distance between two dots
     const distance = Math.sqrt((pos.x - clickedPos.x) ** 2 + (pos.y - clickedPos.y) ** 2)
-    //If its smaller then the radius of the circle we are inside
     return distance <= gCircle.size
 }
 
@@ -81,6 +79,11 @@ function changFontSize(num){
 function getFont(){
     return `${gMeme.lines0.size}px Arial`
 }
+function saveNewAline(direc){
+    gMeme.lines0.align=direc
+    gMeme.lines1.align=direc
+}
+
 
 function initTxt(){
     gMeme.lines0.txt=''
@@ -90,15 +93,17 @@ function initTxt(){
 function wichLine(){
     debugger
     var idx=gMeme.selectedLineIdx
-    var selectLine={pos:{},txt:'',
+    var selectLine={pos:{},txt:'',align:'',
 
     }
     if(idx==='0'){
         selectLine.pos=gMeme.lines0.pos
         selectLine.txt=gMeme.lines0.txt
+        selectLine.align=gMeme.lines0.align
     }else if(idx==='1'){
         selectLine.pos=gMeme.lines1.pos
         selectLine.txt=gMeme.lines1.txt
+        selectLine.align=gMeme.lines1.align
         
     }
     return selectLine
