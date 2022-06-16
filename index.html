@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <title>Blogin.</title>
+</head>
+
+<body onload="init()">
+  <header class="main-header main-layout ">
+    <div class="main-nav flex justify-between ">
+      <div class="main-logo justify-between justify-center">
+        <img src="/img/LOGO.png" alt="">
+      </div>
+      <ul class="nav-bar flex  clean-list ">
+        <li><a href="">Gallery</a></li>
+        <div class="seperator">|</div>
+        <li><a href="">About</a> </li>
+      </ul>
+    </div>
+  </header>
+  <main class="gallery main-layout">
+    <div class="top flex main-layout justify-between">
+     
+        <input type="text" placeholder="Enter search Keyword " oninput="onSetWord({word:this.value})">
+    
+      <div class="serch-word">happy funny dog drink book</div>
+    </div>
+    <section class="grid main-layout ">
+    </section>
+  </main>
+  <section class="aditor flex main-layout justify-between  ">
+    <div class="div-canvas">
+      <canvas height="275" width="270" class="paint-here"></canvas>
+    </div>
+    <div class="controlle-meme">
+      <input class="text-line-top" type="text" placeholder="Enter your top line " oninput="setNewText({txt:this.value,idx:'1'})" >
+      <input class="text-line-bottom" type="text" placeholder="Enter your bottom line " oninput="setNewText({txt:this.value,idx:'0'})" >
+      <button onclick="addLine()">+</button>
+      <input type="color" >
+      <button onclick="clearCanva()">clear</button>
+      <button onclick="changeSize(1)">A+</button>
+      <button onclick="changeSize(0)">A-</button>
+      <button>lefy</button>
+      <button>center</button>
+      <button>right</button>
+      <a href="#" onclick="downloadCanvas(this)" download="my-meme">Dawnload</a>
+      
+    
+
+    </div>
+
+  </section>
+  
+  <footer class="footer flex main-layout">
+  
+  </footer>
+
+
+
+
+  
+  <script src="js/home-controller.js"></script>
+  <script src="js/service/home-service.js"></script>
+  <script src="js/service/meme-service.js"></script>
+</body>
+
+</html>

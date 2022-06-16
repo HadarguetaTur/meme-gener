@@ -1,0 +1,16 @@
+.controll-meme{
+    display: grid;
+    grid-template-columns: repeat(5, 30px);
+    grid-template-rows: repeat(6, 30px);
+    grid-gap: 0.5em;
+    justify-content: center;
+    object-fit: cover;
+    margin: 0 auto;
+    padding:14px 25px;
+    height: 470px;
+}
+
+
+.text-line-bottom{
+    display: none;
+}

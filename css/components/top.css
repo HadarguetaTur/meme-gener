@@ -1,0 +1,15 @@
+.top{
+   
+    padding: 20px 20px;
+}
+
+
+.top input{
+    width: 130px;
+    outline: 0;
+    border-width: 0 0 1px;
+    border-color: #040a2c;
+    font-size: 9.5px;
+    font-weight: bold;
+    line-height: 11px;
+}
