@@ -7,7 +7,7 @@ var gFilterBy;
 function createImgs() {
     const imgs = [];
     for (var i = 1; i < 10; i++) {
-        var img = { id: `${i}`, url: `"/img/${i}.jpg"`, keywords: ['funny', 'cat',] }
+        var img = { id: `${i}`, url: `"../img/${i}.jpg"`, keywords: ['funny', 'cat',] }
         imgs.push(img)
     }
     return imgs
