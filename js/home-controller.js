@@ -1,6 +1,5 @@
 var gCanvas
 var gCtx
-var gStarTextPos={x:50,y:50};
 const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
 
 
@@ -8,8 +7,7 @@ const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
 function init() {
     renderImgs()
     gCanvas = document.querySelector('.paint-here')
-    gCtx = gCanvas.getContext('2d')
-    
+    gCtx = gCanvas.getContext('2d')    
 }
 
 
@@ -34,8 +32,7 @@ function onSetWord(serchWord) {
 function getSelectId(id) {
     saveSelectId(id)
     moveTonextPage()
-    renderCanvas()
-      
+    renderCanvas()      
 }
 
 function moveTonextPage(){
@@ -43,16 +40,14 @@ function moveTonextPage(){
     document.querySelector('.aditor').style.display="flex"
 }
 
-
  function renderCanvas(){
+    debugger
     var meme=getMeme()
     renderImgCanvas(meme.selectedImgId)
-    var line=wichLine()
-    console.log(line)
-    renderTxtLine(line.txt,line.pos,line.align) 
-    
+    meme.lines.forEach((line)=>{
+        renderTxtLine(line.txt,line.pos,line.align) 
+    })   
  }
-
 
 function renderImgCanvas(id){
     var src=`/img/${id}.jpg`
@@ -60,6 +55,11 @@ function renderImgCanvas(id){
     img.src=src
     gCtx.drawImage(img,0,0,gCanvas.width,gCanvas.height)
 }
+
+function changeLine(){
+    changeLineText()
+}
+
 
 
 function renderTxtLine(text,pos,align){
@@ -74,19 +74,16 @@ function renderTxtLine(text,pos,align){
 }
 
 function addLine(){
-    document.querySelector('.text-line-bottom').style.display="flex"
-
-     
+    addNewLine()      
 }
 
 
 
 function setNewText(textLine){
     saveMemeText(textLine) 
-    saveNewIdex(textLine.idx)
-    var line=wichLine()
-    renderTxtLine(line.txt,line.pos,line.align) 
+    renderCanvas()
 }
+
 
 function changDir(direc){
     saveNewAline(direc)
@@ -94,25 +91,25 @@ function changDir(direc){
 
 }
 
-function getAline(){
-    
-
+function setIdx(){
+    saveNewIdex()
 }
+
+
 
 function clearCanva(){
     initTxt()
     renderCanvas()
 }
 
+
 function changeSize(num){
     changFontSize(num)
     renderCanvas()
 }
 
-function downloadCanvas(elLink) {
-    
+function downloadCanvas(elLink) { 
     const data = gCanvas.toDataURL();
-    console.log('data', data);
     elLink.href = data;
     elLink.download = 'my-meme';
   }

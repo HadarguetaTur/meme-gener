@@ -24,7 +24,7 @@ function createImgs() {
 
 
 function makeUrl(num){
-    return `"./img/${num}.jpg"`
+    return `"img/${num}.jpg"`
 }
 
 function getFilterBy(serchWord){

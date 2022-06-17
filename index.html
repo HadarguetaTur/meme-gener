@@ -15,7 +15,6 @@
   <link rel="stylesheet" href="css/style.css" />
   <title>Blogin.</title>
 </head>
-
 <body onload="init()" class="main-layout ">
   <header class="main-header main-layout ">
     <div class="main-nav flex justify-between ">
@@ -31,9 +30,9 @@
   </header>
   <main class="gallery main-layout">
     <div class="top flex main-layout justify-between">
-     
-        <input type="text" placeholder="Enter search Keyword " oninput="onSetWord({word:this.value})">
-    
+
+      <input type="text" placeholder="Enter search Keyword " oninput="onSetWord({word:this.value})">
+
       <div class="serch-word">happy funny dog drink book</div>
     </div>
     <section class="grid main-layout ">
@@ -43,33 +42,29 @@
     <div class="div-canvas">
       <canvas height="275" width="270" class="paint-here"></canvas>
     </div>
-    <div class="controlle-meme">
-      <input class="text-line-top" type="text" placeholder="Enter your top line " oninput="setNewText({txt:this.value,idx:'1'})" >
-      <input class="text-line-bottom" type="text" placeholder="Enter your bottom line " oninput="setNewText({txt:this.value,idx:'0'})" >
-      <button onclick="addLine()">+</button>
-      <input type="color" >
-      <button onclick="clearCanva()">clear</button>
-      <button onclick="changeSize(1)">A+</button>
-      <button onclick="changeSize(0)">A-</button>
-      <button onclick="changDir('ltr')">lefy</button>
-      <button onclick="changDir('inherit')">center</button>
-      <button onclick="changDir('rtl')">right</button>
-      <a href="#" onclick="downloadCanvas(this)" download="my-meme">Dawnload</a>
-      
-    
-
+    <div class="controlle-meme ">
+      <input class="text-line-top" type="text" placeholder="Enter your line " oninput="setNewText({txt:this.value})">
+      <img class="img-controler-meme" onclick="addLine()" src="img/add.png" alt="">
+      <img class="img-controler-meme swich " onclick="setIdx()"
+        src="img/up-and-down-opposite-double-arrows-side-by-side.png" alt="">
+      <img class="img-controler-meme delete" onclick="clearCanva()" src="img/trash.png" alt="">
+      <input class="img-controler-meme" type="color">
+      <img class="img-controler-meme" onclick="changeSize(1)" src="img/increase font - icon.png" alt="">
+      <img class="img-controler-meme" onclick="changeSize(0)" src="img/decrease font - icon.png" alt="">
+      <img class="img-controler-meme" onclick="changDir('ltr')" src="img/align-to-left.png" alt="">
+      <img class="img-controler-meme" onclick="changDir('inherit')" src="img/center-text-alignment.png" alt="">
+      <img class="img-controler-meme" onclick="changDir('rtl')" src="img/align-to-right.png" alt="">
+      <a href="#" onclick="downloadCanvas(this)" download="my-meme"><button class="save">save</button></a>
     </div>
-
   </section>
-  
   <footer class="footer flex main-layout">
-  
+
   </footer>
 
 
 
 
-  
+
   <script src="js/home-controller.js"></script>
   <script src="js/service/home-service.js"></script>
   <script src="js/service/meme-service.js"></script>

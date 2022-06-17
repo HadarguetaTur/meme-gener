@@ -1,30 +1,44 @@
 
 var gMeme = {
     selectedImgId: '1',
-    selectedLineIdx: '1',
-    lines1: 
+    selectedLineIdx: 0,
+    lines: [
         {
-            txt: ' ',
+            txt: 'AAD TEXT ',
             size: 40,
             align: 'left',
             color: 'black',
-            isDrag:false,
-            pos:{x:50,y:50},
+            isDrag: false,
+            pos: { x: 20, y: 50 },
         },
-    lines0: 
+
         {
-            txt: ' ',
+            txt: 'ADD TEXT ',
             size: 40,
             align: 'left',
             color: 'black',
-            isDrag:false,
-            pos:{x:50,y:250},
-        }
-    
+            isDrag: false,
+            pos: { x: 20, y: 250 },
+        }]
 }
-console.log(gMeme)
-function getMeme(){
+
+function getMeme() {
     return gMeme
+}
+
+function addNewLine() {
+    if (gMeme.lines.length === 3) return
+    gMeme.lines.push(
+        {
+            txt: '',
+            size: 40,
+            align: 'left',
+            color: 'black',
+            isDrag: false,
+            pos: { x: 20, y: 150 },
+        }
+    )
+    console.log(gMeme)
 }
 
 function istextClicked(clickedPos) {
@@ -36,75 +50,64 @@ function istextClicked(clickedPos) {
 function moveText(dx, dy) {
     gCircle.pos.x += dx
     gCircle.pos.y += dy
-
 }
 
 function setTextDrag(isDrag) {
     gMeme.lines.isDrag = isDrag
 }
 
-function saveSelectId(id){
-    gMeme.selectedImgId=id
+function saveSelectId(id) {
+    gMeme.selectedImgId = id
 }
 
-function getId(){
+function getId() {
     return gMeme.selectedImgId
 }
 
-function saveNewIdex(idx){
-    gMeme.selectedLineIdx=idx    
+function saveNewIdex() {
+    gMeme.selectedLineIdx++
+    if (gMeme.selectedLineIdx === gMeme.lines.length) {
+        gMeme.selectedLineIdx = 0
+    }
 }
 
-function saveMemeText(txtLine){
-
-    if(txtLine.idx==='0'){
-        gMeme.lines0.txt=txtLine.txt
-    }else if(txtLine.idx==='1'){
-        gMeme.lines1.txt=txtLine.txt
-    }
+function saveMemeText(txtLine) {
+    var idx=gMeme.selectedLineIdx
+    gMeme.lines[idx].txt = txtLine.txt
     
 }
 
 
-function changFontSize(num){
-    if(num===0){
-        gMeme.lines0.size-=5
-        gMeme.lines1.size-=5
-    }else if(num===1){
-        gMeme.lines0.size+=5
-        gMeme.lines1.size+=5
+function changFontSize(num) {
+    if (num === 0) {
+        gMeme.lines[0].size -= 5
+        gMeme.lines[1].size -= 5
+    } else if (num === 1) {
+        gMeme.lines[0].size += 5
+        gMeme.lines[1].size += 5
     }
 }
 
-function getFont(){
-    return `${gMeme.lines0.size}px Arial`
-}
-function saveNewAline(direc){
-    gMeme.lines0.align=direc
-    gMeme.lines1.align=direc
-}
 
 
-function initTxt(){
-    gMeme.lines0.txt=''
-    gMeme.lines1.txt=''
+
+function getFont() {
+    return `${gMeme.lines[gMeme.selectedLineIdx].size}px Arial`
 }
 
-function wichLine(){
-    debugger
-    var idx=gMeme.selectedLineIdx
-    var selectLine={pos:{},txt:'',align:'',
+function saveNewAline(direc) {
+    gMeme.lines[0].align = direc
+    gMeme.lines[1].align = direc
+}
 
-    }
-    if(idx==='0'){
-        selectLine.pos=gMeme.lines0.pos
-        selectLine.txt=gMeme.lines0.txt
-        selectLine.align=gMeme.lines0.align
-    }else if(idx==='1'){
-        selectLine.pos=gMeme.lines1.pos
-        selectLine.txt=gMeme.lines1.txt
-        selectLine.align=gMeme.lines1.align
-        
-    }
-    return selectLine
+
+function initTxt() {
+    gMeme.lines.forEach((line) => {
+        line.txt =' '
+    })
+}
+
+function wichLine() {
+    var idx = +gMeme.selectedLineIdx
+    return gMeme.lines[idx]
 }
