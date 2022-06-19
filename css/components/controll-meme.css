@@ -12,7 +12,8 @@
          "txt txt txt txt txt"
          ". swich add-line delete ."
          "bigger smaller-txt left-txt center-txt right-txt"
-         ". . color-pic. ."
+         " color-pic stickers stickers stickers stickers"
+        
          "download-mem . shere-mem . save-mem"
      ;
 
@@ -102,7 +103,18 @@
      margin: auto auto;
  }
 
+ .sticker{
+    height: 100;
+    width: 33%;
+    padding: 0.5rem;
+ }
 
+ .stickers{
+    height: 4rem;
+    grid-area:stickers;
+    background-color: #ffff;
+   
+ }
 
 
  @media (max-width: 1050px) {

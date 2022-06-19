@@ -1,13 +1,15 @@
 var gCanvas
 var gCtx
-const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
+
 
 
 
 function init() {
     renderImgs()
     gCanvas = document.querySelector('.paint-here')
-    gCtx = gCanvas.getContext('2d')    
+    gCtx = gCanvas.getContext('2d')  
+    addDataList()  
+    
 }
 
 
@@ -32,7 +34,34 @@ function onSetWord(serchWord) {
 function getSelectId(id) {
     saveSelectId(id)
     moveTonextPage()
-    renderCanvas()      
+    renderCanvas() 
+    addListeners()
+      
+}
+
+function addDataList(){
+    var wordList=getSherchWord()
+    console.log(wordList)
+    var dataList=document.querySelector('datalist')
+    wordList.forEach((word)=>{
+        dataList.innerHTML+=`<option value="${word}">`
+    })
+}
+
+function addSherchWordLine(){
+
+}
+
+function drawSticer(el,x=0,y=0){
+    var pos={x:0,y:0}
+    var size=gCanvas.height/4
+    var width=gCanvas.width/4
+    var src=el
+    creatElementOnCanvas(pos,size,width,src)  
+    var img=new Image
+    img.src=el
+    gCtx.drawImage(img,0,0,width,size)
+    
 }
 
 function moveTonextPage(){
@@ -47,7 +76,12 @@ function moveTonextPage(){
         renderTxtLine(line.txt,line.pos,line.align,line.size,line.color) 
     }) 
     var pos=meme.lines[meme.selectedLineIdx].pos
-    drawRect(pos.x-10,pos.y-meme.lines[meme.selectedLineIdx].size,meme.lines[meme.selectedLineIdx].size)  
+    drawRect(pos.x-10,pos.y-meme.lines[meme.selectedLineIdx].size,meme.lines[meme.selectedLineIdx].size) 
+    var elemens=getElements()
+    elemens.forEach((element)=>{
+        drawSticer(element.src,element.pos.x,element.pos.y)
+    })
+
  }
 
 function renderImgCanvas(id){
@@ -135,45 +169,4 @@ function downloadCanvas(elLink) {
     elLink.download = 'my-meme';
 }
 
-function getEvPos(ev) {
-    var pos = {
-        x: ev.offsetX,
-        y: ev.offsetY
-    }
-    if (gTouchEvs.includes(ev.type)) {
-        ev.preventDefault()
-        ev = ev.changedTouches[0]
-        pos = {
-            x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
-            y: ev.pageY - ev.target.offsetTop - ev.target.clientTop
-        }
-    }
-    return pos
-}
-
-function onDown(ev) {
-    const pos = getEvPos(ev)
-    if (!isCircleClicked(pos)) return
-    setCircleDrag(true)
-    gStartPos = pos
-    document.body.style.cursor = 'grabbing'
-
-}
-
-function onMove(ev) {
-    const circle = getCircle();
-    if (circle.isDrag) {
-        const pos = getEvPos(ev)
-        const dx = pos.x - gStartPos.x
-        const dy = pos.y - gStartPos.y
-        moveCircle(dx, dy)
-        gStartPos = pos
-        renderCanvas()
-    }
-}
-
-function onUp() {
-    setCircleDrag(false)
-    document.body.style.cursor = 'grab'
-}
 

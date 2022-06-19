@@ -14,9 +14,9 @@ var gMeme = {
 
 ]
 }
-
+var locY=500
 const memHight = document.querySelector('canvas').height
-const memWidth=document.querySelector('canvas').width
+const memWidth = document.querySelector('canvas').width
 
 
 function getMeme() {
@@ -24,7 +24,7 @@ function getMeme() {
 }
 
 function addNewLine() {
-    if (gMeme.lines.length === 2) return
+    if (gMeme.lines.length === 4) return
     gMeme.lines.push(
         {
             txt: 'add text',
@@ -32,25 +32,15 @@ function addNewLine() {
             align: 'left',
             color: '#fffff',
             isDrag: false,
-            pos: { x: 20, y: 500},
+            pos: { x: 20, y: locY},
         }
+        
+       
     )
+ locY=locY/2
 }
 
-function istextClicked(clickedPos) {
-    const { pos } = gCircle.lines
-    const distance = Math.sqrt((pos.x - clickedPos.x) ** 2 + (pos.y - clickedPos.y) ** 2)
-    return distance <= gCircle.size
-}
 
-function moveText(dx, dy) {
-    gCircle.pos.x += dx
-    gCircle.pos.y += dy
-}
-
-function setTextDrag(isDrag) {
-    gMeme.lines.isDrag = isDrag
-}
 
 function saveSelectId(id) {
     debugger
@@ -104,9 +94,8 @@ function saveNewAline(direc) {
 
 
 function initTxt() {
-    gMeme.lines.forEach((line) => {
-        line.txt =' '
-    })
+    gMeme.lines[gMeme.selectedLineIdx].txt=''
+
 }
 
 function wichLine() {
