@@ -1,14 +1,15 @@
 canvas{
-    margin: 13px 26px;
-    background-color: blue;
-    
+    background-color: blue;   
+    width: 100%;
+    margin: 0.8125rem 1.5rem;
+    /* object-fit: cover; */
+   
 }
 
 
-.aditor{
-    display: none;
-    margin: 60px auto;
-}
+
+
+
 
 
 

@@ -41,12 +41,13 @@ function moveTonextPage(){
 }
 
  function renderCanvas(){
-    debugger
     var meme=getMeme()
     renderImgCanvas(meme.selectedImgId)
     meme.lines.forEach((line)=>{
-        renderTxtLine(line.txt,line.pos,line.align) 
-    })   
+        renderTxtLine(line.txt,line.pos,line.align,line.size,line.color) 
+    }) 
+    var pos=meme.lines[meme.selectedLineIdx].pos
+    drawRect(pos.x-10,pos.y-meme.lines[meme.selectedLineIdx].size,meme.lines[meme.selectedLineIdx].size)  
  }
 
 function renderImgCanvas(id){
@@ -56,43 +57,40 @@ function renderImgCanvas(id){
     gCtx.drawImage(img,0,0,gCanvas.width,gCanvas.height)
 }
 
-function changeLine(){
-    changeLineText()
-}
-
-
-
-function renderTxtLine(text,pos,align){
-    debugger
+function renderTxtLine(text,pos,align,size,color){
     gCtx.lineWidth = 2;
-    gCtx.strokeStyle = 'white';
-    gCtx.fillStyle = 'black';
-    gCtx.font = getFont();
-    gCtx.fillText(text, pos.x, pos.y);
+    gCtx.strokeStyle = 'black';
+    gCtx.fillStyle =color;
+    gCtx.font = `${size}px Impact`;
     gCtx.direction=align
+    gCtx.fillText(text, pos.x, pos.y);  
     gCtx.strokeText(text, pos.x, pos.y);
 }
 
 function addLine(){
-    addNewLine()      
+    addNewLine() 
+    setIdx()   
 }
-
-
 
 function setNewText(textLine){
     saveMemeText(textLine) 
     renderCanvas()
 }
 
+function textColor(color){
+    changColorLine(color)
+    renderCanvas()
+}
 
 function changDir(direc){
     saveNewAline(direc)
     renderCanvas()
-
 }
+
 
 function setIdx(){
     saveNewIdex()
+    renderCanvas()   
 }
 
 
@@ -108,12 +106,34 @@ function changeSize(num){
     renderCanvas()
 }
 
+function randomImg(){
+    saveSelectId('random')
+    moveTonextPage()
+    renderCanvas()  
+}
+
+
+function drawRect(x,y,height){
+    gCtx.beginPath();
+    gCtx.rect(x, y, 530, height+10);
+    gCtx.strokeStyle = 'yellow';
+    gCtx.stroke();
+}
+
+function cleanRect(){
+    var meme=getMeme()
+    renderImgCanvas(meme.selectedImgId)
+    meme.lines.forEach((line)=>{
+        renderTxtLine(line.txt,line.pos,line.align) 
+    }) 
+}
+
 function downloadCanvas(elLink) { 
+    cleanRect()
     const data = gCanvas.toDataURL();
     elLink.href = data;
     elLink.download = 'my-meme';
-  }
-
+}
 
 function getEvPos(ev) {
     var pos = {

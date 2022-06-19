@@ -34,37 +34,39 @@
       <input type="text" placeholder="Enter search Keyword " oninput="onSetWord({word:this.value})">
 
       <div class="serch-word">happy funny dog drink book</div>
+      <button class="I am Flexible" onclick="randomImg()">  I am Flexible</button>  
     </div>
     <section class="grid main-layout ">
+     
     </section>
+    
   </main>
-  <section class="aditor flex main-layout justify-between  ">
-    <div class="div-canvas">
-      <canvas height="275" width="270" class="paint-here"></canvas>
+  <section class="aditor">
+    <div class="div-canvas ">
+      <canvas height="540"  width="550" class="paint-here"></canvas>
     </div>
-    <div class="controlle-meme ">
+    <div class="controlle-meme  ">
       <input class="text-line-top" type="text" placeholder="Enter your line " oninput="setNewText({txt:this.value})">
-      <img class="img-controler-meme" onclick="addLine()" src="img/add.png" alt="">
+      <img class="img-controler-meme add" onclick="addLine()" src="img/add.png" alt="">
       <img class="img-controler-meme swich " onclick="setIdx()"
         src="img/up-and-down-opposite-double-arrows-side-by-side.png" alt="">
       <img class="img-controler-meme delete" onclick="clearCanva()" src="img/trash.png" alt="">
-      <input class="img-controler-meme" type="color">
-      <img class="img-controler-meme" onclick="changeSize(1)" src="img/increase font - icon.png" alt="">
-      <img class="img-controler-meme" onclick="changeSize(0)" src="img/decrease font - icon.png" alt="">
-      <img class="img-controler-meme" onclick="changDir('ltr')" src="img/align-to-left.png" alt="">
-      <img class="img-controler-meme" onclick="changDir('inherit')" src="img/center-text-alignment.png" alt="">
-      <img class="img-controler-meme" onclick="changDir('rtl')" src="img/align-to-right.png" alt="">
-      <a href="#" onclick="downloadCanvas(this)" download="my-meme"><button class="save">save</button></a>
+      <input class="img-controler-meme color-pic" type="color" onchange="textColor(this.value)">
+      <img class="img-controler-meme bigger-txt" onclick="changeSize((+5))" src="img/increase font - icon.png" alt="">
+      <img class="img-controler-meme smaller-txt" onclick="changeSize((-5))" src="img/decrease font - icon.png" alt="">
+      <img class="img-controler-meme left-txt" onclick="changDir('left')" src="img/align-to-left.png" alt="">
+      <img class="img-controler-meme center-txt" onclick="changDir('center')" src="img/center-text-alignment.png" alt="">
+      <img class="img-controler-meme right-txt" onclick="changDir('right')" src="img/align-to-right.png" alt="">
+      <a class="download-mem" href="#" onclick="downloadCanvas(this)" download="my-meme"><button class="download">download</button></a>
+      <a class="shere-mem" href="#" onclick="downloadCanvas(this)" download="my-meme"><button class="shere">shere</button></a>
+      <a class="save-mem" href="#" onclick="downloadCanvas(this)" download="my-meme"><button class="save">save</button></a>
     </div>
   </section>
   <footer class="footer flex main-layout">
-
   </footer>
 
-
-
-
-
+  <script src="js/utils.js"></script>
+  <script src="js/service/meme-service.js"></script>
   <script src="js/home-controller.js"></script>
   <script src="js/service/home-service.js"></script>
   <script src="js/service/meme-service.js"></script>

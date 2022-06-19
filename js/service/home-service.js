@@ -6,7 +6,6 @@ var gFilterBy;
 
 
 function createImgs() {
-    debugger
     const imgs = [
         { id: 1, url: makeUrl(1), keywords: ['TRANP', 'funny',] },
         { id: 2, url: makeUrl(2), keywords: ['dogs', 'baby',] },

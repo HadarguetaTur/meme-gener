@@ -1,59 +1,117 @@
  .controlle-meme {
      display: grid;
-     grid-template-columns: repeat(5, 30px);
-     grid-template-rows: repeat(5, 30px);
+     grid-template-columns: repeat(5 ,3rem);
+     grid-template-rows: repeat(5);
      grid-gap: 0.5em;
+     margin: 2rem 0;
      flex-direction: row;
-     margin: 0 auto;
-     padding: 14px 25px;
+     justify-content: center;
+     width: 100%;
+     grid-template-areas:
+
+         "txt txt txt txt txt"
+         ". swich add-line delete ."
+         "bigger smaller-txt left-txt center-txt right-txt"
+         ". . color-pic. ."
+         "download-mem . shere-mem . save-mem"
+     ;
+
 
 
 
  }
 
 
- .text-line-top{
-     grid-column: 1/6;
-     grid-row: 1;
+ .text-line-top {
+     grid-area: txt;
+
 
  }
 
+ .add {
+     grid-area: add-line;
+ }
 
+ .swich {
+     grid-area: swich;
+ }
 
-.save{
-    background-color: var(--primary-clr-100);
-    width: 60px;
-    height: 30px;
-    border-radius: 6px;
-    grid-column: 2/3;
-    grid-row: 4;
+ .delete {
+     grid-area: delete;
+ }
+
+ .color-pic {
+     grid-area: color-pic;
+ }
+
+ .bigger-txt {
+     grid-area: bigger;
+ }
+
+ .smaller-txt {
+     grid-area: smaller-txt;
+ }
+
+ .left-txt {
+     grid-area: left-txt;
+ }
+
+ .center-txt {
+     grid-area: center-txt;
+
+ }
+
+ .right-txt {
+     grid-area: right-txt;
+ }
+.download-mem{
+    grid-area: download-mem; 
+}
+.shere-mem{
+    grid-area: shere-mem; 
+}
+.save-mem{
+    grid-area: save-mem; 
 }
 
+ button{
+     background-color: var(--primary-clr-100);
+     width: 4rem;
+     height: 2rem;
+     border-radius: 6px;
+     padding: 1px;
+ 
+ }
 
- .aditor {
+
+.aditor{
      border-inline-end: 1px solid #4f4e4e;
      border-inline-start: 1px solid #4f4e4e;
-     background-color: var(--primary-clr-200)
+     background-color: var(--primary-clr-200);
+     display: none;
+     margin: 3.75rem auto;
+     align-content: center;
+     padding: 1rem 8rem;
+     
  }
 
  .img-controler-meme {
-     height: 30px;
-     width: 30px;
      background-color: #ffff;
      border-radius: 6px;
-     padding: 5px;
+     padding: 0.3125rem;
+     margin: auto auto;
  }
 
 
 
 
+ @media (max-width: 1050px) {
+     .aditor {
+         flex-direction: column;
+         padding: 1rem 2rem;
+     }
 
-
-@media only screen and (max-width:580px) {
-    .aditor {
-        flex-direction: column;
-
+     canvas{
+        margin: 0 auto;
+     }
     }
-
-
-  }

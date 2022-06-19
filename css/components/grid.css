@@ -1,16 +1,11 @@
 .grid{
-  display: grid;
-  grid-template-columns: repeat(3, 180px);
-  grid-template-rows: repeat(9, 140px);
-  grid-gap: 0.5em;
   justify-content: center;
-  object-fit: cover;
   background-color: var(--primary-clr-200);
-  margin-bottom: 390px;
-  padding: 13px 25px;
-  max-height: 470px;
-
- 
+  margin: 0 auto; 
+  margin-bottom: 20rem;
+  display: flex;
+  flex-wrap: wrap; 
+  object-fit: cover;
 }
 
 .img{
@@ -20,14 +15,11 @@
 
 }
 
-@media only screen and (max-width:580px) {
-  
-  .grid{
-
-    grid-template-columns: repeat(2, 180px);
-
-  
-   
-  }
+.img-div{
+  max-height:8.75rem;
+  max-width: 11.25rem;
+  margin: 0.5em;
+  width: 100%;
 
 }
+

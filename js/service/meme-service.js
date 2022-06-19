@@ -4,41 +4,37 @@ var gMeme = {
     selectedLineIdx: 0,
     lines: [
         {
-            txt: 'AAD TEXT ',
+            txt: 'add text  ',
             size: 40,
             align: 'left',
-            color: 'black',
+            color: '#ffff',
             isDrag: false,
             pos: { x: 20, y: 50 },
         },
 
-        {
-            txt: 'ADD TEXT ',
-            size: 40,
-            align: 'left',
-            color: 'black',
-            isDrag: false,
-            pos: { x: 20, y: 250 },
-        }]
+]
 }
+
+const memHight = document.querySelector('canvas').height
+const memWidth=document.querySelector('canvas').width
+
 
 function getMeme() {
     return gMeme
 }
 
 function addNewLine() {
-    if (gMeme.lines.length === 3) return
+    if (gMeme.lines.length === 2) return
     gMeme.lines.push(
         {
-            txt: '',
+            txt: 'add text',
             size: 40,
             align: 'left',
-            color: 'black',
+            color: '#fffff',
             isDrag: false,
-            pos: { x: 20, y: 150 },
+            pos: { x: 20, y: 500},
         }
     )
-    console.log(gMeme)
 }
 
 function istextClicked(clickedPos) {
@@ -57,7 +53,12 @@ function setTextDrag(isDrag) {
 }
 
 function saveSelectId(id) {
+    debugger
     gMeme.selectedImgId = id
+    if(id==='random'){
+        gMeme.selectedImgId= getRandomInt(1,gImgs.length)
+    }
+
 }
 
 function getId() {
@@ -77,27 +78,28 @@ function saveMemeText(txtLine) {
     
 }
 
-
+function changColorLine(color){
+    gMeme.lines[gMeme.selectedLineIdx].color=color
+}
 function changFontSize(num) {
-    if (num === 0) {
-        gMeme.lines[0].size -= 5
-        gMeme.lines[1].size -= 5
-    } else if (num === 1) {
-        gMeme.lines[0].size += 5
-        gMeme.lines[1].size += 5
-    }
+    gMeme.lines[gMeme.selectedLineIdx].size+=num
 }
 
 
 
-
-function getFont() {
-    return `${gMeme.lines[gMeme.selectedLineIdx].size}px Arial`
-}
 
 function saveNewAline(direc) {
-    gMeme.lines[0].align = direc
-    gMeme.lines[1].align = direc
+    debugger
+    if(direc==='center'){
+        gMeme.lines[gMeme.selectedLineIdx].align=direc
+        gMeme.lines[gMeme.selectedLineIdx].pos.x=memWidth/3
+    }else if(direc==='right'){
+        gMeme.lines[gMeme.selectedLineIdx].align=direc
+        gMeme.lines[gMeme.selectedLineIdx].pos.x=memWidth-150
+    }else if(direc==='left'){
+        gMeme.lines[gMeme.selectedLineIdx].align=direc
+        gMeme.lines[gMeme.selectedLineIdx].pos.x=20
+    }
 }
 
 
