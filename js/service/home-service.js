@@ -27,16 +27,6 @@ return imgs
 }
 
 function getSherchWord(){
-    // const words=['tramp','funny','dogs','love','baby','cat']
-    // gImgs.forEach((img) => {
-    //     img.keywords.forEach((word)=>{
-    //         console.log(word)
-            
-    //     })
-    // });
-    // const newWords = words.filter(function(item, pos) {
-    //     return words.indexOf(item) == pos;
-    // })
     return ['tramp','funny','dogs','love','baby','cat']
 }
 
