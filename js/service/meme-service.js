@@ -15,8 +15,7 @@ var gMeme = {
 ]
 }
 var locY=500
-const memHight = document.querySelector('canvas').height
-const memWidth = document.querySelector('canvas').width
+
 
 
 function getMeme() {
@@ -84,10 +83,10 @@ function saveNewAline(direc) {
     debugger
     if(direc==='center'){
         gMeme.lines[gMeme.selectedLineIdx].align=direc
-        gMeme.lines[gMeme.selectedLineIdx].pos.x=memWidth/3
+        gMeme.lines[gMeme.selectedLineIdx].pos.x=document.querySelector('canvas').width/3
     }else if(direc==='right'){
         gMeme.lines[gMeme.selectedLineIdx].align=direc
-        gMeme.lines[gMeme.selectedLineIdx].pos.x=memWidth-150
+        gMeme.lines[gMeme.selectedLineIdx].pos.x=document.querySelector('canvas').width-150
     }else if(direc==='left'){
         gMeme.lines[gMeme.selectedLineIdx].align=direc
         gMeme.lines[gMeme.selectedLineIdx].pos.x=20
