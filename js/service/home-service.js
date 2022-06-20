@@ -12,11 +12,11 @@ function createImgs() {
         imgs = [
             { id: 1, url: makeUrl(1), keywords: ['tramp', 'funny'] },
             { id: 2, url: makeUrl(2), keywords: ['dogs', 'love'] },
-            { id: 3, url: makeUrl(3), keywords: 'baby' },
-            { id: 4, url: makeUrl(4), keywords: 'cat' },
-            { id: 5, url: makeUrl(5), keywords: 'baby' },
-            { id: 6, url: makeUrl(6), keywords: 'funny' },
-            { id: 7, url: makeUrl(7), keywords: 'baby' },
+            { id: 3, url: makeUrl(3), keywords: ['baby' ]},
+            { id: 4, url: makeUrl(4), keywords: ['cat'] },
+            { id: 5, url: makeUrl(5), keywords: ['baby'] },
+            { id: 6, url: makeUrl(6), keywords: ['funny'] },
+            { id: 7, url: makeUrl(7), keywords: ['baby'] },
             { id: 8, url: makeUrl(8), keywords: ['funny', 'cat',] },
             { id: 9, url: makeUrl(9), keywords: ['funny', 'cat',] },
         ];
