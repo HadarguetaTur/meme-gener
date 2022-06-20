@@ -36,6 +36,8 @@
 
       <div class="serch-word">happy funny dog drink book</div>
       <button class="I am Flexible" onclick="randomImg()">  I am Flexible</button>  
+      <input type="file" class="file-input btn" name="image" onchange="onImgInput(event)" />
+        <button class="btn" onclick="uploadImg()">Upload </button>
     </div>
     <section class="grid main-layout ">
      
@@ -59,9 +61,9 @@
       <img class="img-controler-meme center-txt" onclick="changDir('center')" src="img/center-text-alignment.png" alt="">
       <img class="img-controler-meme right-txt" onclick="changDir('right')" src="img/align-to-right.png" alt="">
       <div class="stickers flex">
-        <img onclick="drawSticer(this.src)" class="sticker" src="img/coffee-mug (1).png" alt="">
-        <img onclick="drawSticer(this.src)" class="sticker" src="img/stay-home.png" alt="">
-        <img onclick="drawSticer(this.src)" class="sticker" src="img/stay-home.png" alt="">
+        <img onclick="saveSticer(this.src)" class="sticker" src="img/coffee-mug (1).png" alt="">
+        <img onclick="saveSticer(this.src)" class="sticker" src="img/stay-home.png" alt="">
+        <img onclick="saveSticer(this.src)" class="sticker" src="img/reading-book.png" alt="">
       </div>
       <a class="download-mem" href="#" onclick="downloadCanvas(this)" download="my-meme"><button class="download">download</button></a>
       <a class="shere-mem" href="#" onclick="downloadCanvas(this)" download="my-meme"><button class="shere">shere</button></a>
@@ -70,6 +72,7 @@
   </section>
   <footer class="footer flex main-layout">
   </footer>
+  <script src="js/service/upload-service.js"></script>
   <script src="js/service/drag-and-drop.service.js"></script>
   <script src="js/drag-and-drop.controller.js"></script>
   <script src="js/utils.js"></script>

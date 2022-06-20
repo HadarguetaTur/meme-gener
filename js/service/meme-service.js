@@ -47,6 +47,8 @@ function saveSelectId(id) {
     gMeme.selectedImgId = id
     if(id==='random'){
         gMeme.selectedImgId= getRandomInt(1,gImgs.length)
+    }else if(id==='upload'){
+        gMeme.selectedImgId=gImgs.length
     }
 
 }

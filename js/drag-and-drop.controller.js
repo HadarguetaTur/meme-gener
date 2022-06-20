@@ -27,35 +27,34 @@ function addTouchListeners() {
 
 function onDown(ev) {
     const pos = getEvPos(ev)
-    console.log(pos)
-    if (!isElementClick(pos)) return
+    if (!isElementIsClick(pos)) return
     gStartPos = pos
+    saveNewPos(pos)
     document.body.style.cursor = 'grabbing'
 
 }
 
 function onMove(ev) {
     const element = getElement();
-    console.log(element)
     if (!element) return
     const pos = getEvPos(ev)
     const dx = pos.x - gStartPos.x
-    const dy = pos.y - gStartPos.y
+    const dy = pos.y -gStartPos.y
     moveElement(dx, dy)
     gStartPos = pos
     renderCanvas()
 }
 
 function onUp() {
-    setElementDrag(false)
-    document.body.style.cursor = 'grab'
+    // setElementIsClick()
+    document.body.style.cursor = 'unset'   
 }
 
-function resizeCanvas() {
-    const elContainer = document.querySelector('.canvas-container')
-    gCanvas.width = elContainer.offsetWidth
-    gCanvas.height = elContainer.offsetHeight
-}
+// function resizeCanvas() {
+//     const elContainer = document.querySelector('.div-canvas')
+//     gCanvas.width = elContainer.offsetWidth
+//     gCanvas.height = elContainer.offsetHeight
+// }
 
 function getEvPos(ev) {
     var pos = {

@@ -52,16 +52,22 @@ function addSherchWordLine(){
 
 }
 
-function drawSticer(el,x=0,y=0){
-    var pos={x:0,y:0}
+function drawSticer(src,x,y,width,size){
+    var img=new Image
+    img.src=src
+    console.log(`x:${x} y:${y}`)
+    gCtx.drawImage(img,x,y,width,size)
+    
+}
+
+function saveSticer(el,x=0,y=0){
+    var pos={x:x,y:y}
     var size=gCanvas.height/4
     var width=gCanvas.width/4
     var src=el
     creatElementOnCanvas(pos,size,width,src)  
-    var img=new Image
-    img.src=el
-    gCtx.drawImage(img,0,0,width,size)
-    
+    renderCanvas()
+
 }
 
 function moveTonextPage(){
@@ -72,19 +78,21 @@ function moveTonextPage(){
  function renderCanvas(){
     var meme=getMeme()
     renderImgCanvas(meme.selectedImgId)
+    var elemens=getElements()
+    elemens.forEach((element)=>{
+        drawSticer(element.src,element.pos.x,element.pos.y,element.width,element.size)
+    })
     meme.lines.forEach((line)=>{
         renderTxtLine(line.txt,line.pos,line.align,line.size,line.color) 
     }) 
     var pos=meme.lines[meme.selectedLineIdx].pos
     drawRect(pos.x-10,pos.y-meme.lines[meme.selectedLineIdx].size,meme.lines[meme.selectedLineIdx].size) 
-    var elemens=getElements()
-    elemens.forEach((element)=>{
-        drawSticer(element.src,element.pos.x,element.pos.y)
-    })
+
 
  }
 
 function renderImgCanvas(id){
+    debugger
     var src=`/img/${id}.jpg`
     var img=new Image
     img.src=src
@@ -170,3 +178,31 @@ function downloadCanvas(elLink) {
 }
 
 
+function onImgInput(ev) {
+    loadImageFromInput(ev, renderImg)
+}
+
+function loadImageFromInput(ev, onImageReady) {
+    document.querySelector('.share-container').innerHTML = ''
+    var reader = new FileReader()
+
+    reader.onload = (event) => {
+        console.log('onload');
+        var img = new Image()
+            // Render on canvas
+        img.src = event.target.result
+        img.onload = onImageReady.bind(null, img)
+    }
+    console.log('after');
+    reader.readAsDataURL(ev.target.files[0])
+}
+
+function renderImg(img) {
+    gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height);
+}
+
+function resizeCanvas() {
+    var elContainer = document.querySelector('.canvas-container')
+    gElCanvas.width = elContainer.offsetWidth
+    gElCanvas.height = elContainer.offsetHeight
+}

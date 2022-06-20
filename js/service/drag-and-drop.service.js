@@ -1,56 +1,60 @@
-var gCanvasElements=[];
+var gCanvasElements = [];
 
 
 
-function creatElementOnCanvas(pos,size,width,src='') {
-
+function creatElementOnCanvas(pos, size, width, src = '') {
     var element = {
         pos: pos,
         size: size,
         width: width,
-        src:src,
+        src: src,
         isDrag: false,
-        isClick: false
+        isClick:false
     }
-gCanvasElements.push(element)
+    gCanvasElements.push(element)
 
-    console.log(gCanvasElements)
+
 }
-function isElementClick(clickedPos) {
-    debugger
+function isElementIsClick(isClickedPos) {
     gCanvasElements.forEach((element) => {
-        const distance = Math.sqrt((element.pos.x - clickedPos.x) ** 2 + (element.pos.y - clickedPos.y) ** 2)    
-        if (distance <= element.size) {
-            element.isClick = true
-            element.isDrag = true
+        var s = element.size * element.width
+        var h = (element.pos.x + isClickedPos.y) * (element.pos.y + isClickedPos.y)
+        if (h <= s) {
+            element.isClick=true
             return true
-     
         }
     });
     return false
 }
 
 function moveElement(dx, dy) {
-    var element=getElement()
+    var element = getElement()
     element.pos.x += dx
     element.pos.y += dy
+    element.pos.x = Math.abs(element.pos.x)
+    element.pos.y = Math.abs(element.pos.y)
+
 
 }
 
 
 function getElement() {
-    for(var i=0;i<gCanvasElements.length;i++){
-        if(gCanvasElements[i].isDrag)return gCanvasElements[i]
+    for (var i = 0; i < gCanvasElements.length; i++) {
+        if (gCanvasElements[i].isClick) {
+            return gCanvasElements[i]
+            
+        }
     }
-}
-
-function setElementDrag(val){
-    var element=getElement()
-    element.isClick=val
-    element.isDrag=val
 
 }
 
-function getElements(){
+function setElementIsClick() {
+    const element = getElement()
+    console.log(element)
+    element.isClick=false
+}
+
+function getElements() {
     return gCanvasElements
 }
+
