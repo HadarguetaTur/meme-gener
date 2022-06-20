@@ -15,7 +15,8 @@ var gMeme = {
 ]
 }
 var locY=500
-
+const memHight = document.querySelector('canvas').height
+const memWidth = document.querySelector('canvas').width
 
 
 function getMeme() {
@@ -23,7 +24,7 @@ function getMeme() {
 }
 
 function addNewLine() {
-    if (gMeme.lines.length === 4) return
+    if (gMeme.lines.length === 3) return
     gMeme.lines.push(
         {
             txt: 'add text',
@@ -39,15 +40,26 @@ function addNewLine() {
  locY=locY/2
 }
 
+function istextClicked(clickedPos) {
+    const { pos } = gCircle.lines
+    const distance = Math.sqrt((pos.x - clickedPos.x) ** 2 + (pos.y - clickedPos.y) ** 2)
+    return distance <= gCircle.size
+}
 
+function moveText(dx, dy) {
+    gCircle.pos.x += dx
+    gCircle.pos.y += dy
+}
+
+function setTextDrag(isDrag) {
+    gMeme.lines.isDrag = isDrag
+}
 
 function saveSelectId(id) {
     debugger
     gMeme.selectedImgId = id
     if(id==='random'){
         gMeme.selectedImgId= getRandomInt(1,gImgs.length)
-    }else if(id==='upload'){
-        gMeme.selectedImgId=gImgs.length
     }
 
 }
@@ -83,10 +95,10 @@ function saveNewAline(direc) {
     debugger
     if(direc==='center'){
         gMeme.lines[gMeme.selectedLineIdx].align=direc
-        gMeme.lines[gMeme.selectedLineIdx].pos.x=document.querySelector('canvas').width/3
+        gMeme.lines[gMeme.selectedLineIdx].pos.x=memWidth/3
     }else if(direc==='right'){
         gMeme.lines[gMeme.selectedLineIdx].align=direc
-        gMeme.lines[gMeme.selectedLineIdx].pos.x=document.querySelector('canvas').width-150
+        gMeme.lines[gMeme.selectedLineIdx].pos.x=memWidth-150
     }else if(direc==='left'){
         gMeme.lines[gMeme.selectedLineIdx].align=direc
         gMeme.lines[gMeme.selectedLineIdx].pos.x=20
@@ -96,7 +108,7 @@ function saveNewAline(direc) {
 
 function initTxt() {
     gMeme.lines[gMeme.selectedLineIdx].txt=''
-
+    
 }
 
 function wichLine() {
